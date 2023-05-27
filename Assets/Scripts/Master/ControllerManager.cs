@@ -7,18 +7,14 @@ public class ControllerManager : Singleton<ControllerManager>
     public PlayerInput Controller { get; private set; }
     public PlayerInput.MainGameActions Actions { get; private set; }
 
-    protected new void Awake()
-    {
-        base.Awake();
-        if(Controller == null)
-        {
-            CreateController();
-        }
-    }
+    
 
     private void Start()
     {
-        
+        if (Controller == null)
+        {
+            CreateController();
+        }
     }
 
     private void OnEnable()
