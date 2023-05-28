@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bee61d52d6c3fe344a75b76caa84bf84
+guid: 322f0e1cb4085be4d956abf9e0814bab
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -51,7 +51,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ant-Sheet_0
+      name: birdsheet_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 11
         y: 4
-        width: 15
-        height: 40
+        width: 48
+        height: 52
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,41 +143,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7445e9a36b8c9149a282fdf4e5cc9f7
-      internalID: 1771438715
+      spriteID: 7fe8ee78e59ff5a4ca6796fe3ae3d64a
+      internalID: -281909126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ant-Sheet_1
+      name: birdsheet_1
       rect:
         serializedVersion: 2
-        x: 62
-        y: 5
-        width: 19
-        height: 40
-      alignment: 9
-      pivot: {x: 0.39473686, y: 0}
+        x: 75
+        y: 7
+        width: 43
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39d1fe535f722424b88d1d091ec43208
-      internalID: 557252156
+      spriteID: d8b48eec6de29b44290cfcb2a21c5f98
+      internalID: -692705209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ant-Sheet_2
+      name: birdsheet_2
       rect:
         serializedVersion: 2
-        x: 110
+        x: 146
+        y: 6
+        width: 28
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd53e032cb35c747855ca338af6cdf9
+      internalID: 411672987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: birdsheet_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 7
+        width: 43
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f3965cbaf972ed45bc0ef71c46fd36e
+      internalID: -1985146214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: birdsheet_4
+      rect:
+        serializedVersion: 2
+        x: 261
         y: 4
-        width: 15
-        height: 40
+        width: 48
+        height: 52
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 125c44d72a641f741925543465cc2845
-      internalID: -1302840196
+      spriteID: 58c2bb9b131185c4f9dee646815925a5
+      internalID: 1568415995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ant-Sheet_3
+      name: birdsheet_5
       rect:
         serializedVersion: 2
-        x: 158
-        y: 5
-        width: 15
-        height: 40
+        x: 337
+        y: 6
+        width: 30
+        height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,8 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa1655fffdb91614c91dbe9fad367131
-      internalID: -480804901
+      spriteID: 465eb0241b9f1a94b98a13dc65a7b206
+      internalID: -465289372
       vertices: []
       indices: 
       edges: []
@@ -215,7 +257,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 04a5f4248d60310469b68a8c8da801de
+    spriteID: 45e6d3daa766a564eb2ef42a7877502c
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +265,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ant-Sheet_0: 1771438715
-      Ant-Sheet_2: -1302840196
-      Ant-Sheet_1: 557252156
-      Ant-Sheet_3: -480804901
+      birdsheet_0: -281909126
+      birdsheet_5: -465289372
+      birdsheet_2: 411672987
+      birdsheet_4: 1568415995
+      birdsheet_1: -692705209
+      birdsheet_3: -1985146214
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
