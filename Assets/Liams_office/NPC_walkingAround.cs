@@ -35,13 +35,12 @@ public class NPC_walkingAround : MonoBehaviour
         start_location = gameObject.transform.position;
         SetRandomTargetLocation();
 
-        OnEnable();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(!IsEnable)return;
+        if(!IsEnable)
+            return;
 
         // Check if the position of the NPC and Target Location are approximately equal.
         if (Vector3.Distance(transform.position, TargetLocation) > 0.001f)
@@ -69,7 +68,11 @@ public class NPC_walkingAround : MonoBehaviour
 
     private void SetNewTask()
     {
-        if(ListRandomTasks.Count == 0){OnDisable(); return;}
+        if(ListRandomTasks.Count == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         int randomIndexOfTask = Random.Range(0, ListRandomTasks.Count);
         ListRandomTasks[randomIndexOfTask].Invoke();
     }
