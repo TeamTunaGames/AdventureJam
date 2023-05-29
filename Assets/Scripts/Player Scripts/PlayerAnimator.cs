@@ -11,6 +11,7 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerState currentState;
 
     private readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
+    private readonly int InAirHash = Animator.StringToHash("InAir");
 
     private void Awake()
     {
@@ -27,9 +28,17 @@ public class PlayerAnimator : MonoBehaviour
             {
                 case PlayerState.Idle:
                     anim.SetBool(IsWalkingHash, false);
+                    anim.SetBool(InAirHash, false);
                     break;
                 case PlayerState.Walking:
                     anim.SetBool(IsWalkingHash, true);
+                    anim.SetBool(InAirHash, false);
+                    break;
+                case PlayerState.Jumping:
+                    anim.SetBool(InAirHash, true);
+                    break;
+                case PlayerState.Freefall:
+                    anim.SetBool(InAirHash, true);
                     break;
                 default:
                     break;
