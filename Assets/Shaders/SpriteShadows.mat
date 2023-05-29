@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: test
+  m_Name: SpriteShadows
   m_Shader: {fileID: -6465566751694194690, guid: 66587a2cd454d1644902f87527d70771, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
