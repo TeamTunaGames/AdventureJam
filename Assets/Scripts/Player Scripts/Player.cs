@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player stats")]
-    [SerializeField] private float speed = 1.0f;
+    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float underGroundSpeedMod = .5f;
     [SerializeField] private float jumpPower = 15.0f;
     [SerializeField] private float jumpAccel = 12.0f;
     [SerializeField] private float fallAccel = 15.0f;
@@ -27,12 +28,13 @@ public class Player : MonoBehaviour
 
     private Camera cam;
     private CharacterController cc;
-    private PlayerAnimator anim;
+
+    private bool animEndedThisFrame = false;
+    public bool AnimEndedThisFrame { set { animEndedThisFrame = value; } }
 
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
-        anim = GetComponent<PlayerAnimator>();
 
     }
 
@@ -59,17 +61,32 @@ public class Player : MonoBehaviour
             case PlayerState.Walking:
                 WalkingAction();
                 break;
+            case PlayerState.UnderGround:
+                UnderGroundAction();
+                break;
+
             case PlayerState.Jumping:
                 JumpingAction();
                 break;
             case PlayerState.Freefall:
                 FreeFallAction();
                 break;
+
+            case PlayerState.EnteringHole:
+                HoleTransitionAction();
+                break;
+            case PlayerState.ExitingHole:
+                goto case PlayerState.EnteringHole;
             default:
                 break;
         }
 
         cc.Move(CalculateVelocity() * Time.deltaTime);
+    }
+
+    private void LateUpdate()
+    {
+        //animEndedThisFrame = false;
     }
 
     private void SwitchState(PlayerState state)
@@ -122,6 +139,11 @@ public class Player : MonoBehaviour
             PlayerJump();
             return true;
         }
+        if (actions.Dig.triggered)
+        {
+            SwitchState(PlayerState.EnteringHole);
+            return true;
+        }
         if (!cc.isGrounded)
         {
             SwitchState(PlayerState.Freefall);
@@ -155,6 +177,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UnderGroundAction()
+    {
+        velocity *= underGroundSpeedMod;
+
+        if (actions.Dig.triggered)
+        {
+            SwitchState(PlayerState.ExitingHole);
+            return;
+        }
+    }
+
     private void PlayerJump()
     {
         yVelocity = jumpPower;
@@ -182,6 +215,19 @@ public class Player : MonoBehaviour
             return;
     }
 
+    private void HoleTransitionAction()
+    {
+        velocity = Vector2.zero;
+        if (animEndedThisFrame)
+        {
+            animEndedThisFrame = false;
+            if (state == PlayerState.EnteringHole)
+                SwitchState(PlayerState.UnderGround);
+            else
+                SwitchState(PlayerState.Idle);
+        }
+    }
+
     private void JumpingAction()
     {
         if (CheckCommonAirCancel())
@@ -193,13 +239,21 @@ public class Player : MonoBehaviour
             return;
         }
     }
+
+    
+
+    
 }
 
 public enum PlayerState : byte
 {
     Idle,
     Walking,
+    UnderGround,
     
     Jumping,
     Freefall,
+
+    EnteringHole,
+    ExitingHole,
 }

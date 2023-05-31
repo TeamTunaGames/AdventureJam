@@ -12,6 +12,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
     private readonly int InAirHash = Animator.StringToHash("InAir");
+    private readonly int HoleHash = Animator.StringToHash("Hole");
 
     private void Awake()
     {
@@ -34,12 +35,21 @@ public class PlayerAnimator : MonoBehaviour
                     anim.SetBool(IsWalkingHash, true);
                     anim.SetBool(InAirHash, false);
                     break;
+                
+
                 case PlayerState.Jumping:
                     anim.SetBool(InAirHash, true);
                     break;
                 case PlayerState.Freefall:
                     anim.SetBool(InAirHash, true);
                     break;
+
+                case PlayerState.EnteringHole:
+                    anim.SetBool(IsWalkingHash, false);
+                    anim.SetTrigger(HoleHash);
+                    break;
+                case PlayerState.ExitingHole:
+                    goto case PlayerState.EnteringHole;
                 default:
                     break;
             }
