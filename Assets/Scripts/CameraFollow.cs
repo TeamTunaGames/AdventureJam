@@ -14,6 +14,14 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
+    private void Start()
+    {
+        if(cameraFocus == null)
+        {
+            cameraFocus = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+    }
+
     private void LateUpdate()
     {
         Vector3 target = cameraFocus.TransformPoint(new Vector3(0, height, -distanceFromFocus));

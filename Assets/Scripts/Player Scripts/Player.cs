@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
-
+        GameMaster.Instance.SetPlayer(this);
     }
 
     private void Start()
@@ -82,11 +82,6 @@ public class Player : MonoBehaviour
         }
 
         cc.Move(CalculateVelocity() * Time.deltaTime);
-    }
-
-    private void LateUpdate()
-    {
-        //animEndedThisFrame = false;
     }
 
     private void SwitchState(PlayerState state)
