@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class NPCScript : MonoBehaviour
+using PixelCrushers.DialogueSystem;
+public class NPCScript : MonoBehaviour, IInteractable
 {
-    [SerializeField] private bool interactable = true;
+    [SerializeField] private bool isInteractable = true;
     [SerializeField] private bool facesLeftByDefault = true;
     [SerializeField] private bool acknowledgesPlayer = true;
 
     [SerializeField] private float acknowledgePlayerDistance = 5.0f;
+
+    [ConversationPopup, SerializeField] private string convo;
+
+    public bool IsInteractable => isInteractable;
 
     [SerializeField] private SpriteRenderer rend;
 
@@ -46,11 +50,16 @@ public class NPCScript : MonoBehaviour
         {
             float dotProduct = Vector3.Dot(difference.normalized, Vector3.left);
 
-            rend.flipX = (Mathf.Sign(dotProduct) == 1);
+            rend.flipX = (dotProduct >= 0.0f);
         }
         else
         {
             rend.flipX = !facesLeftByDefault;
         }
+    }
+
+    public void Interact()
+    {
+        DialogueManager.StartConversation(convo);
     }
 }

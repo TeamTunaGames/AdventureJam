@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float terminalVelocity = -20.0f;
 
     private PlayerState state = PlayerState.Idle;
-    public PlayerState State { get { return state; } }
+    public PlayerState State => state;
 
     private Vector2 velocity = Vector2.zero;
     private float yVelocity = 0.0f;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     private Camera cam;
     private CharacterController cc;
+    private GetInteractable getInteractable;
 
     private bool animEndedThisFrame = false;
     public bool AnimEndedThisFrame { set { animEndedThisFrame = value; } }
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         GameMaster.Instance.SetPlayer(this);
+        getInteractable = GetComponent<GetInteractable>();
     }
 
     private void Start()
@@ -80,6 +82,8 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
+
+        
 
         cc.Move(CalculateVelocity() * Time.deltaTime);
     }
@@ -138,6 +142,13 @@ public class Player : MonoBehaviour
         {
             SwitchState(PlayerState.EnteringHole);
             return true;
+        }
+        if (actions.Interact.triggered)
+        {
+            if(getInteractable.Interactable != null)
+            {
+                getInteractable.Interactable.Interact();
+            }
         }
         if (!cc.isGrounded)
         {
@@ -251,4 +262,6 @@ public enum PlayerState : byte
 
     EnteringHole,
     ExitingHole,
+
+    Cutscene,
 }
