@@ -164,7 +164,7 @@ public class Crane : MonoBehaviour
                 if(doll)
                 {
                     //nasty code don't look at it
-                    Wallet aaa = hit.collider.gameObject.GetComponent<Wallet>();
+                    TroubleMaker aaa = hit.collider.gameObject.GetComponent<TroubleMaker>();
                     if(aaa) aaa.enabled = false;
                     //
                     doll.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -243,7 +243,7 @@ public class Crane : MonoBehaviour
                 child_Ridgidbody2D.isKinematic = false;
             }
             //nasty code don't look at it
-            Wallet aaa = child.gameObject.GetComponent<Wallet>();
+            TroubleMaker aaa = child.gameObject.GetComponent<TroubleMaker>();
             if(aaa) aaa.enabled = true;
             //
             child.parent = null;

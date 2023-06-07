@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wallet : MonoBehaviour
+public class TroubleMaker : MonoBehaviour
 {
     [SerializeField] private GameObject target_ToMoveAwayFrom;
     [SerializeField] private GameObject wallet;
