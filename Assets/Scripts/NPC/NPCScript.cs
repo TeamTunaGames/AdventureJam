@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
+
 public class NPCScript : MonoBehaviour, IInteractable
 {
     [SerializeField] private bool isInteractable = true;
@@ -18,6 +19,7 @@ public class NPCScript : MonoBehaviour, IInteractable
 
     private float APDSquared;
 
+    private Player player;
     private Transform playerTransform;
 
     private void Awake()
@@ -27,7 +29,8 @@ public class NPCScript : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        playerTransform = GameMaster.Instance.PlayerInstance.transform;
+        player = GameMaster.Instance.PlayerInstance;
+        playerTransform = player.transform;
     }
 
 #if UNITY_EDITOR
@@ -45,12 +48,19 @@ public class NPCScript : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        Vector3 difference = transform.position - playerTransform.position;
-        if(difference.sqrMagnitude < APDSquared)
+        if (acknowledgesPlayer && player.State != PlayerState.UnderGround)
         {
-            float dotProduct = Vector3.Dot(difference.normalized, Vector3.left);
+            Vector3 difference = transform.position - playerTransform.position;
+            if (difference.sqrMagnitude < APDSquared)
+            {
+                float dotProduct = Vector3.Dot(difference.normalized, Vector3.left);
 
-            rend.flipX = (dotProduct >= 0.0f);
+                rend.flipX = (dotProduct >= 0.0f);
+            }
+            else
+            {
+                rend.flipX = !facesLeftByDefault;
+            }
         }
         else
         {

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7365455070980589423}
   - component: {fileID: 7365455070980589420}
   - component: {fileID: 7365455070980589421}
-  m_Layer: 0
+  - component: {fileID: 310253897}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -85,6 +86,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7365455070991921116}
   rend: {fileID: 7365455070991921115}
+--- !u!114 &310253897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365455070980589408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fdcb5a2cab6ff4eaffece7c24f321a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 192
+  interactableRadius: 2
 --- !u!1 &7365455070991921119
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +115,7 @@ GameObject:
   - component: {fileID: 7365455070991921116}
   - component: {fileID: 7365455070991921117}
   - component: {fileID: 7365455070991921114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ant-Sheet_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

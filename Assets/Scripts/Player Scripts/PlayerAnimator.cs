@@ -50,6 +50,9 @@ public class PlayerAnimator : MonoBehaviour
                     break;
                 case PlayerState.ExitingHole:
                     goto case PlayerState.EnteringHole;
+
+                case PlayerState.Cutscene:
+                    goto case PlayerState.Idle;
                 default:
                     break;
             }

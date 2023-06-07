@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class Player : MonoBehaviour
 {
@@ -48,9 +49,24 @@ public class Player : MonoBehaviour
         actions = controller.MainGame;
     }
 
+    private void OnEnable()
+    {
+        DialogueManager.instance.conversationStarted += OnConversationStart;
+        DialogueManager.instance.conversationEnded += OnCoversationEnd;
+    }
+
+    private void OnDisable()
+    {
+        if(DialogueManager.instance != null)
+        {
+            DialogueManager.instance.conversationStarted -= OnConversationStart;
+            DialogueManager.instance.conversationEnded -= OnCoversationEnd;
+        }
+    }
+
     private void Update()
     {
-        Vector2 input = actions.Move.ReadValue<Vector2>();
+        Vector2 input = (state != PlayerState.Cutscene) ? actions.Move.ReadValue<Vector2>() : Vector2.zero;
         UpdateInput(input);
 
         AffectedGravity();
@@ -246,8 +262,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    private void OnConversationStart(Transform actor)
+    {
+        SwitchState(PlayerState.Cutscene);
+    }
 
+    private void OnCoversationEnd(Transform actor)
+    {
+        SwitchState(PlayerState.Idle);
+    }
     
 }
 
