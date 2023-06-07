@@ -44,6 +44,24 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c44a1d2-924e-4473-99ca-65162dae0c05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dig"",
+                    ""type"": ""Button"",
+                    ""id"": ""12d75b14-a620-4752-a14c-77bad26993cd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +130,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37d1fcd9-8266-4c9b-8abd-d6e3e6ed7c0d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b70d5918-9fee-42b8-9859-4de4a79ed8a9"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dig"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -128,6 +168,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_MainGame = asset.FindActionMap("MainGame", throwIfNotFound: true);
         m_MainGame_Interact = m_MainGame.FindAction("Interact", throwIfNotFound: true);
         m_MainGame_Move = m_MainGame.FindAction("Move", throwIfNotFound: true);
+        m_MainGame_Jump = m_MainGame.FindAction("Jump", throwIfNotFound: true);
+        m_MainGame_Dig = m_MainGame.FindAction("Dig", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -189,12 +231,16 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IMainGameActions m_MainGameActionsCallbackInterface;
     private readonly InputAction m_MainGame_Interact;
     private readonly InputAction m_MainGame_Move;
+    private readonly InputAction m_MainGame_Jump;
+    private readonly InputAction m_MainGame_Dig;
     public struct MainGameActions
     {
         private @PlayerInput m_Wrapper;
         public MainGameActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_MainGame_Interact;
         public InputAction @Move => m_Wrapper.m_MainGame_Move;
+        public InputAction @Jump => m_Wrapper.m_MainGame_Jump;
+        public InputAction @Dig => m_Wrapper.m_MainGame_Dig;
         public InputActionMap Get() { return m_Wrapper.m_MainGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -210,6 +256,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_MainGameActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_MainGameActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_MainGameActionsCallbackInterface.OnMove;
+                @Jump.started -= m_Wrapper.m_MainGameActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_MainGameActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_MainGameActionsCallbackInterface.OnJump;
+                @Dig.started -= m_Wrapper.m_MainGameActionsCallbackInterface.OnDig;
+                @Dig.performed -= m_Wrapper.m_MainGameActionsCallbackInterface.OnDig;
+                @Dig.canceled -= m_Wrapper.m_MainGameActionsCallbackInterface.OnDig;
             }
             m_Wrapper.m_MainGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -220,6 +272,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Dig.started += instance.OnDig;
+                @Dig.performed += instance.OnDig;
+                @Dig.canceled += instance.OnDig;
             }
         }
     }
@@ -237,5 +295,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnDig(InputAction.CallbackContext context);
     }
 }

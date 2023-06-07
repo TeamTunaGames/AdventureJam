@@ -1,24 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
     public PlayerInput Controller { get; private set; }
     public PlayerInput.MainGameActions Actions { get; private set; }
 
-    protected new void Awake()
-    {
-        base.Awake();
-        if(Controller == null)
-        {
-            CreateController();
-        }
-    }
+    
 
     private void Start()
     {
-        
+        if (Controller == null)
+        {
+            CreateController();
+        }
     }
 
     private void OnEnable()
@@ -32,6 +29,7 @@ public class ControllerManager : Singleton<ControllerManager>
             CreateController();
             Controller.Enable();
         }
+        InputDeviceManager.RegisterInputAction("Submit", Actions.Interact);
     }
 
     private void OnDisable()
