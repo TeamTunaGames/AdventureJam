@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
@@ -28,6 +29,7 @@ public class ControllerManager : Singleton<ControllerManager>
             CreateController();
             Controller.Enable();
         }
+        InputDeviceManager.RegisterInputAction("Submit", Actions.Interact);
     }
 
     private void OnDisable()
