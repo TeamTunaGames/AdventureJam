@@ -30,7 +30,8 @@ public class NPCScript : MonoBehaviour, IInteractable
     private void Start()
     {
         player = GameMaster.Instance.PlayerInstance;
-        playerTransform = player.transform;
+        if (player != null)
+            playerTransform = player.transform;
     }
 
 #if UNITY_EDITOR
@@ -48,6 +49,15 @@ public class NPCScript : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        //Bandaid solution. I don't feel like creating a callback
+        if(player == null)
+        {
+            player = GameMaster.Instance.PlayerInstance;
+            if (player == null)
+                return;
+            playerTransform = player.transform;
+        }
+
         if (acknowledgesPlayer && player.State != PlayerState.UnderGround)
         {
             Vector3 difference = transform.position - playerTransform.position;

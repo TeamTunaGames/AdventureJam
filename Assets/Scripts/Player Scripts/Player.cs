@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private Camera cam;
     private CharacterController cc;
-    private GetInteractable getInteractable;
+    private InteractableFinder getInteractable;
 
     private bool animEndedThisFrame = false;
     public bool AnimEndedThisFrame { set { animEndedThisFrame = value; } }
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         GameMaster.Instance.SetPlayer(this);
-        getInteractable = GetComponent<GetInteractable>();
+        getInteractable = GetComponent<InteractableFinder>();
     }
 
     private void Start()
@@ -98,8 +98,6 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
-
-        
 
         cc.Move(CalculateVelocity() * Time.deltaTime);
     }
