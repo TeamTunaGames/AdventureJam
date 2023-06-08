@@ -60,10 +60,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
-  facesLeftByDefault: 1
+  facesLeftByDefault: 0
   acknowledgesPlayer: 1
-  acknowledgePlayerDistance: 5
-  convo: Test Convo
+  acknowledgePlayerDistance: 3
+  convo: Bird Nerd
   rend: {fileID: 6407310371936854928}
 --- !u!1 &6407310371936854934
 GameObject:
@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6407310371936854934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 703437736, guid: ffdae35459c1fb0429917d808b909bfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.92, y: 2.08}

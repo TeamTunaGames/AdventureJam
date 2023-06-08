@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2104513290759452224}
   - component: {fileID: 2104513290759452225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ToppatAnt_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104513290759452238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 49.054546, y: 0, z: 7.2436266}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7499563457561933019}
   - component: {fileID: 1109352973636168000}
   - component: {fileID: 1339560185524166657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Toppat Ant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   facesLeftByDefault: 1
   acknowledgesPlayer: 1
   acknowledgePlayerDistance: 5
-  convo: Test Convo
+  convo: TopHatAnt
   rend: {fileID: 2104513290759452225}
 --- !u!65 &1339560185524166657
 BoxCollider:

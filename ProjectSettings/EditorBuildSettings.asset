@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Game Scenes/Ant House.unity
+    guid: 073d662182c395c4b8bab8f964375a4e
+  - enabled: 1
     path: Assets/Scenes/Main Game Scenes/Street.unity
     guid: 8ea9ffb59a4c5d043b2b44b583b3c500
   - enabled: 1
