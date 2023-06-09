@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class Wallet : Doll
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        if (DialogueLua.GetVariable("HasWallet").asBool)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

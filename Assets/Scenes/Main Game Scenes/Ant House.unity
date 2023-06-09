@@ -4390,6 +4390,7 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 8ea9ffb59a4c5d043b2b44b583b3c500, type: 3}
     scenePath: Assets/Scenes/Main Game Scenes/Street.unity
   spawnLocation: 0
+  bgmChange: 2
 --- !u!1001 &1991284254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4397,10 +4398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7555003265221093652, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7555649866456552023, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4477,10 +4474,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7764439550694656776, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7765356265074779530, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4527,18 +4520,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7765373078798063854, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7765675053133232212, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7765675053133232212, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7765675053133232212, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7765680731833629794, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
@@ -4599,10 +4580,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7765949312781224118, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7766108577528393114, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7766188526949466920, guid: cd4a30cfa7d08a84dae5440242b58e6f, type: 3}

@@ -242,9 +242,19 @@ public class Player : MonoBehaviour
         {
             animEndedThisFrame = false;
             if (state == PlayerState.EnteringHole)
+            {
+                cc.height = .75f;
+                cc.center = Vector3.up * .375f;
                 SwitchState(PlayerState.UnderGround);
+            }
+
             else
+            {
+                cc.height = 1.5f;
+                cc.center = Vector3.up * .75f;
                 SwitchState(PlayerState.Idle);
+            }
+                
         }
     }
 

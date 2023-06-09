@@ -23,6 +23,8 @@ public enum ReturingState : byte
 
 public class Crane : MonoBehaviour
 {
+    [SerializeField] private SceneReference arcadeScene;
+
     [SerializeField] private float speed = 2.0f;
     [SerializeField] private float descentSpeed = 5.0f;
 
@@ -69,9 +71,13 @@ public class Crane : MonoBehaviour
     private void Update()
     {
         //when user press interacting buttom
-        if (actions.Interact.triggered & currentClawState == ClawState.Waiting)
+        if (actions.Interact.triggered && currentClawState == ClawState.Waiting)
         {
             currentClawState = ClawState.Dropping;
+        }
+        if(actions.Dig.triggered && currentClawState == ClawState.Waiting)
+        {
+            GameMaster.Instance.GoToScene(arcadeScene, 1);
         }
     }
 
